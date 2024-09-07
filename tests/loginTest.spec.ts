@@ -3,10 +3,9 @@ import { LoginPageSteps } from './pageSteps/loginPage';
 import { InventoryPageSteps } from './pageSteps/inventoryPage';
 import { ProductsPage } from './pageSteps/productsPage';
 import { CheckoutPage } from './pageSteps/checkoutPage';
-import Esperas from "../hooks/esperas";
+import Esperas from '../hooks/esperas';
 
 test.describe('Ingresar a la Web y Agregar Producto', () => {
-
   let esperas: Esperas;
   let loginPage: LoginPageSteps;
   let productPage: ProductsPage;
@@ -20,29 +19,55 @@ test.describe('Ingresar a la Web y Agregar Producto', () => {
     checkoutPage = new CheckoutPage(page);
     inventoryPage = new InventoryPageSteps(page);
 
-    await page.goto('https://www.saucedemo.com');
-    await loginPage.validarTitulo();
-    await loginPage.completarUsuario('myUsername');
-    await loginPage.completarPassword('myPassword');
-    await loginPage.validarBotonLogin();
-    await loginPage.clickIngresar();
+    await test.step('Ir a la página de inicio de sesión', async () => {
+      await page.goto('https://www.saucedemo.com');
+    });
+
+    await test.step('Validar título de la página de inicio de sesión', async () => {
+      await loginPage.validarTitulo();
+    });
+
+    await test.step('Completar el usuario y la contraseña', async () => {
+      await loginPage.completarUsuario('myUsername');
+      await loginPage.completarPassword('myPassword');
+    });
+
+    await test.step('Validar y hacer clic en el botón de ingresar', async () => {
+      await loginPage.validarBotonLogin();
+      await loginPage.clickIngresar();
+    });
   });
 
   test('Agregar Producto y Hacer Checkout Del Producto', async ({ page }) => {
-    await esperas.esperarSegundos(6);
-    await inventoryPage.validarUrl();
-    await inventoryPage.validarTitulo();
-    //await inventoryPage.clickEnBotonOpenMenu();
-    await productPage.addProductToCart();
-    await productPage.goToCart();
-    await checkoutPage.checkOut();
-    await checkoutPage.fillInformationForm();
-    await checkoutPage.finishCheckOut();
-    await checkoutPage.validateSuccessMessage();
+    await test.step('Esperar 6 segundos', async () => {
+      await esperas.esperarSegundos(6);
+    });
+
+    await test.step('Validar URL y título de la página de inventario', async () => {
+      await inventoryPage.validarUrl();
+      await inventoryPage.validarTitulo();
+    });
+
+    await test.step('Agregar producto al carrito', async () => {
+      await productPage.addProductToCart();
+    });
+
+    await test.step('Ir al carrito', async () => {
+      await productPage.goToCart();
+    });
+
+    await test.step('Realizar el proceso de checkout', async () => {
+      await checkoutPage.checkOut();
+      await checkoutPage.fillInformationForm();
+      await checkoutPage.finishCheckOut();
+    });
+
+    await test.step('Validar mensaje de éxito de la compra', async () => {
+      await checkoutPage.validateSuccessMessage();
+    });
   });
 
   test.afterEach(async ({ page }) => {
     await page.close();
   });
-
 });
