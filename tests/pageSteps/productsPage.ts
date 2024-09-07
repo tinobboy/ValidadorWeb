@@ -9,11 +9,11 @@ export class ProductsPage {
         this.shoppingCartIcon = page.locator('a[class = "shopping_cart_link"]');
     }
 
-    async addProductToCart(): Promise<void> {
+    async addProductToCart() {
         await this.addToCartBtn.click();
     }
 
-    async goToCart(): Promise<void> {
+    async goToCart() {
         await this.shoppingCartIcon.click();
     }
 }

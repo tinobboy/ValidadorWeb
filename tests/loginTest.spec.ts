@@ -9,6 +9,8 @@ import Esperas from "../hooks/esperas";
 test('Login Test', async ({ page }) => {
   const esperas = new Esperas(page);
   const loginPage = new LoginPageSteps(page);
+  const productPage = new ProductsPage(page);
+  const checkoutPage = new CheckoutPage(page);
   
   await page.goto('https://www.saucedemo.com');
 
@@ -22,31 +24,17 @@ test('Login Test', async ({ page }) => {
   await esperas.esperarSegundos(6)
   await inventoryPage.validarUrl();
   await inventoryPage.validarTitulo();
-  await inventoryPage.clickEnBotonOpenMenu();
-      
-});
+  //await inventoryPage.clickEnBotonOpenMenu();
 
-test('Agregar Producto al Carro', async ({ page }) => {
-  const esperas = new Esperas(page);
-  const productPage = new ProductsPage(page);
-  
   await productPage.addProductToCart();
   await productPage.goToCart();
-});
 
-test('Realizar Checkout Del Producto', async ({ page }) => {
-  const esperas = new Esperas(page);
-  const checkoutPage = new CheckoutPage(page);
-  
   await checkoutPage.checkOut();
   await checkoutPage.fillInformationForm();
   await checkoutPage.finishCheckOut();
   await checkoutPage.validateSuccessMessage();
-});
 
-test('Cerrar navegador', async ({ page }) => {
-
-    await page.close();
-
+  await page.close();
+      
 });
 

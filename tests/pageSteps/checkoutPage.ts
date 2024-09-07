@@ -19,22 +19,22 @@ export class CheckoutPage {
         this.completeOrderMessage = page.locator('.complete-header');
     }
 
-    async checkOut(): Promise<void> {
+    async checkOut() {
         await this.checkOutBtn.click();
     }
 
-    async fillInformationForm(): Promise<void> {
+    async fillInformationForm() {
         await this.firstName.fill('asdad');
         await this.lastName.fill('asdasd');
         await this.zipCode.fill('123');
         await this.continueBtn.click();
     }
 
-    async finishCheckOut(): Promise<void> {
+    async finishCheckOut() {
         await this.finishBtn.click();
     }
 
-    async validateSuccessMessage(): Promise<void> {
+    async validateSuccessMessage() {
         await expect(this.completeOrderMessage).toBeVisible();
     }
 }
