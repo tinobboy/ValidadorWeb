@@ -6,7 +6,7 @@ import { CheckoutPage } from './pageSteps/checkoutPage';
 
 import Esperas from "../hooks/esperas";
 
-test('Login Test', async ({ page }) => {
+test('Login and Checkout Test', async ({ page }) => {
   const esperas = new Esperas(page);
   const loginPage = new LoginPageSteps(page);
   const productPage = new ProductsPage(page);
