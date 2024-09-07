@@ -34,14 +34,6 @@ test('Agregar Producto al Carro', async ({ page }) => {
   await productPage.goToCart();
 });
 
-test('Agregar Producto al Carro', async ({ page }) => {
-  const esperas = new Esperas(page);
-  const productPage = new ProductsPage(page);
-  
-  await productPage.addProductToCart();
-  await productPage.goToCart();
-});
-
 test('Realizar Checkout Del Producto', async ({ page }) => {
   const esperas = new Esperas(page);
   const checkoutPage = new CheckoutPage(page);
