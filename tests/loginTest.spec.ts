@@ -1,6 +1,9 @@
 import { test, Browser, Page, expect } from '@playwright/test';
 import { LoginPageSteps } from './pageSteps/loginPage';
 import { InventoryPageSteps } from './pageSteps/inventoryPage';
+import { ProductsPage } from './pageSteps/productsPage';
+import { CheckoutPage } from './pageSteps/checkoutPage';
+
 import Esperas from "../hooks/esperas";
 
 test('Login Test', async ({ page }) => {
@@ -20,9 +23,38 @@ test('Login Test', async ({ page }) => {
   await inventoryPage.validarUrl();
   await inventoryPage.validarTitulo();
   await inventoryPage.clickEnBotonOpenMenu();
-  await page.close();
       
-      
-    // Agrega más aserciones según sea necesario
-  });
+});
+
+test('Agregar Producto al Carro', async ({ page }) => {
+  const esperas = new Esperas(page);
+  const productPage = new ProductsPage(page);
+  
+  await productPage.addProductToCart();
+  await productPage.goToCart();
+});
+
+test('Agregar Producto al Carro', async ({ page }) => {
+  const esperas = new Esperas(page);
+  const productPage = new ProductsPage(page);
+  
+  await productPage.addProductToCart();
+  await productPage.goToCart();
+});
+
+test('Realizar Checkout Del Producto', async ({ page }) => {
+  const esperas = new Esperas(page);
+  const checkoutPage = new CheckoutPage(page);
+  
+  await checkoutPage.checkOut();
+  await checkoutPage.fillInformationForm();
+  await checkoutPage.finishCheckOut();
+  await checkoutPage.validateSuccessMessage();
+});
+
+test('Cerrar navegador', async ({ page }) => {
+
+    await page.close();
+
+});
 
