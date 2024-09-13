@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from "@playwright/test";
-import Assert from "../../hooks/assert";
+import Assert from "../../Utils/assert";
 
 export class LoginPageSteps {
     private readonly page: Page;

@@ -1,6 +1,6 @@
 import { Locator, Page, expect } from "@playwright/test";
-import Assert from "../../hooks/assert";
-import Esperas from "../../hooks/esperas";
+import Assert from "../../Utils/assert";
+import Esperas from "../../Utils/esperas";
 
 export class InventoryPageSteps {
     private readonly page: Page;

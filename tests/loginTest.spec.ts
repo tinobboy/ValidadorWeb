@@ -3,7 +3,7 @@ import { LoginPageSteps } from './pageSteps/loginPage';
 import { InventoryPageSteps } from './pageSteps/inventoryPage';
 import { ProductsPage } from './pageSteps/productsPage';
 import { CheckoutPage } from './pageSteps/checkoutPage';
-import Esperas from '../hooks/esperas';
+import Esperas from '../Utils/esperas';
 
 test.describe('Ingresar a la Web y Agregar Producto', () => {
   let esperas: Esperas;
