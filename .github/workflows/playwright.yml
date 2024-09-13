@@ -16,7 +16,7 @@ jobs:
       - name: Cancel previous redundant builds
         uses: styfle/cancel-workflow-actions@0.9.1
         with:
-          access_token: ${{ github.token }}
+          access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Set up Node.js ${{ matrix.node-version }}
