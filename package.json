@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test loginTest.spec.ts"
+    "test": "npx playwright test"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,7 @@
   "devDependencies": {
     "@playwright/test": "^1.47.0",
     "@types/node": "^20.14.12",
+    "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4"
   }
 }
