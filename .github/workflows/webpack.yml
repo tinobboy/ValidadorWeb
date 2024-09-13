@@ -15,10 +15,15 @@ jobs:
         node-version: [20.x]
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Cancel previous redundant builds
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: actions/checkout@v2
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
 
@@ -26,9 +31,6 @@ jobs:
       run: |
         npm install
         npx webpack
-    - name: Install dependencies
-      run: npm install
-    - name: Install Playwright
-      run: npx playwright install
-    - name: Run tests
-      run: npx playwright test
+        npx playwright install
+        npx playwright test
+
