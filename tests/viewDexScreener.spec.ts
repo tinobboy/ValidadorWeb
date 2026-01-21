@@ -5,7 +5,7 @@ import { ProductsPage } from './pageSteps/productsPage';
 import { CheckoutPage } from './pageSteps/checkoutPage';
 import Esperas from '../Utils/esperas';
 
-test.describe('Ingresar a la Web y Agregar Producto', () => {
+test.describe('Ingresar a la Web', () => {
   let esperas: Esperas;
   let loginPage: LoginPageSteps;
   let productPage: ProductsPage;
@@ -20,10 +20,10 @@ test.describe('Ingresar a la Web y Agregar Producto', () => {
     inventoryPage = new InventoryPageSteps(page);
 
     await test.step('Ir a la página de inicio de sesión', async () => {
-      await page.goto('https://www.saucedemo.com');
+      await page.goto('https://dexscreener.com/base/0x7c280a746edb310dcfa3e02f6c787347c2ef7384fc743611f4536e2254a2087d');
     });
 
-    await test.step('Validar título de la página de inicio de sesión', async () => {
+    /* await test.step('Validar título de la página de inicio de sesión', async () => {
       await loginPage.validarTitulo();
     });
 
@@ -35,15 +35,15 @@ test.describe('Ingresar a la Web y Agregar Producto', () => {
     await test.step('Validar y hacer clic en el botón de ingresar', async () => {
       await loginPage.validarBotonLogin();
       await loginPage.clickIngresar();
-    });
+    });*/
   });
 
-  test('Agregar Producto y Hacer Checkout Del Producto', async ({ page }) => {
+  test('Espera 6 segundos', async ({ page }) => {
     await test.step('Esperar 6 segundos', async () => {
       await esperas.esperarSegundos(6);
     });
 
-    await test.step('Validar URL y título de la página de inventario', async () => {
+    /*await test.step('Validar URL y título de la página de inventario', async () => {
       await inventoryPage.validarUrl();
       await inventoryPage.validarTitulo();
     });
@@ -64,8 +64,8 @@ test.describe('Ingresar a la Web y Agregar Producto', () => {
 
     await test.step('Validar mensaje de éxito de la compra', async () => {
       await checkoutPage.validateSuccessMessage();
-    });
-  });
+    });*/
+  }); 
 
   test.afterEach(async ({ page }) => {
     await page.close();
