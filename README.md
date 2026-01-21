@@ -1,5 +1,8 @@
 # ValidadorWeb Playwright con TypeScript
-Se necesita tener instalado node y vs-code
+Se necesita tener instalado node.js y vs-code
+
+# Instalar Playwright con npm
+npm init playwright@latest
 
 #Ejecutar Tests desde Terminal
 **npx playwright test**
